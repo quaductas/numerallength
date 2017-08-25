@@ -28,3 +28,9 @@ pl<-ggplot(numsenhuge,aes(number,wordlen))+geom_point(col="steelblue")+theme_lig
   scale_x_continuous(breaks=seq.int(0,1000000,100000), labels = labelfn)
 
 pl
+
+# 0 to 1M, log scale, still takes ages
+ggplot(numsenhuge,aes(number,wordlen))+geom_point(col="steelblue")+theme_light()+
+  labs(x="Number (log scale)",y="Length of English numeral")+
+  scale_x_log10(breaks=c(1,10,100,1000,10000,100000,1000000),minor_breaks=NULL,
+                labels=c('1','10','100','1000','10K','100K','1000K'))+annotation_logticks(sides='b')
